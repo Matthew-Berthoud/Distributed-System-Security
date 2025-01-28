@@ -1,0 +1,3 @@
+[submodule "Learning-Go"]
+	path = Learning-Go
+	url = git@github.com:Matthew-Berthoud/Learning-Go.git
