@@ -1,6 +1,9 @@
 [submodule "Learning-Go"]
 	path = Learning-Go
 	url = git@github.com:Matthew-Berthoud/Learning-Go.git
+	branch = main
 [submodule "sget"]
 	path = Projects/sget
 	url = git@github.com:Matthew-Berthoud/sget.git
+[submodule "Projects/sget"]
+	branch = main
