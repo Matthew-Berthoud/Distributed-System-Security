@@ -5,3 +5,6 @@
 	path = Projects/sget
 	url = git@github.com:Matthew-Berthoud/sget.git
 
+[submodule "Projects/sodoh"]
+	path = Projects/sodoh
+	url = git@github.com:Matthew-Berthoud/sodoh.git
