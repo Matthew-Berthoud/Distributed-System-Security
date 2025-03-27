@@ -358,4 +358,7 @@ _Thu Mar 27_
 - Defense against return-oriented-programming: Generate all the valid control flow graphs and make sure that control flow that happens is in that set of possible things
 - That's basically what Kalium is. 
 - Stable identifier for function is URL
+- Serverless functions don't store anything on disk because:
+    1. they can scale to 0
+    2. you're not guaranteed that the function will be the same replica next time, so you can't persist state like that
 
