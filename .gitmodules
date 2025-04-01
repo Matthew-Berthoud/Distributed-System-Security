@@ -4,7 +4,9 @@
 [submodule "sget"]
 	path = Projects/sget
 	url = git@github.com:Matthew-Berthoud/sget.git
-
 [submodule "Projects/sodoh"]
 	path = Projects/sodoh
 	url = git@github.com:Matthew-Berthoud/sodoh.git
+[submodule "Projects/drat"]
+	path = Projects/drat
+	url = git@github.com:Matthew-Berthoud/drat.git
