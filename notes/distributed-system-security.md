@@ -361,4 +361,15 @@ _Thu Mar 27_
 - Serverless functions don't store anything on disk because:
     1. they can scale to 0
     2. you're not guaranteed that the function will be the same replica next time, so you can't persist state like that
+- Information Flow control
+    1. No read up, no write down: for __confidentiality__
+    2. No read down, no write up: for __integrity__
+
+# Practical Byzantine Fault Tolerance
+_Tue Apr 1_
+- Two properties
+    1. safety
+    2. liveness
+- Doesn't just handle faults from some hardware failure, etc, but also handles bugs, malicious nodes, etc.
+    - Byzantine nodes don't have to follow the correct protocol even
 
