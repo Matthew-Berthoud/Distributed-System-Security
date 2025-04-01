@@ -372,4 +372,25 @@ _Tue Apr 1_
     2. liveness
 - Doesn't just handle faults from some hardware failure, etc, but also handles bugs, malicious nodes, etc.
     - Byzantine nodes don't have to follow the correct protocol even
+- Message flow
+    - Client -> primary
+    - primary -> other replicas
+    - other replicas -> client 
+    - Client waits until $\frac{2}{3}$ responses are in agreement
+    - If client doesn't get message back in certain amount of time, it just sends to all replicas
+        - This handles the case of the primary being down
+- How does the primary get chosen?
+    - Views, counters, etc.
+- Pre-Prepare
+    - primary sending forwarded client request to replicas
+    - primary could be lying, so replicas need to verify the signatures, and sequence number stuff
+- "fan-out"
+    - A single request produces a ton of requests on the backend
+- Garbage collection: truncating old replicalogs (section 4.3)
+- View change: how to move to a new primary (section 4.4)
+
+## drat project
+- They have some python code in the paper that you can kind of port over to Go to get you most of the way there
+- Less code to write than previous projects, but the code must be precise
+
 
