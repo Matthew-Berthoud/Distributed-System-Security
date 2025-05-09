@@ -393,4 +393,66 @@ _Tue Apr 1_
 - They have some python code in the paper that you can kind of port over to Go to get you most of the way there
 - Less code to write than previous projects, but the code must be precise
 
+# In Search of an Understandable Consensus Algorithm
+_Thu Apr 3_
+- Most consensus algs assume there aren't any bad agents (like Paxos)
+- Types of consensus algs: voting based (tolerance for bad/faulty agents)
+- Raft has even less of a requirement for consensus between nodes than PBFT one from last time
+- More nodes with less permissions contributing to network leaves us open to Sybil attack
+- Paxos
+    - Doesn't articulate well complicated logging scenarios, or handle Byzantine errors
+    - Guy who invented it also invented LaTeX, and is famous in general
+- Chord: Optimizes for getting answers quicker
+
+## Raft
+- everybody agrees Paxos is great, but no one agrees how it should be implemented, so it's not really standard when people use it
+- Raft called understandable, because it's more understandable than Paxos
+- Three states
+    1. Leader
+    2. Follower
+    3. Candidate
+- Each node given different election timer. When it goes off, sends out a vote, and if it's the only one who sent out a ping, if it gets responses from all nodes, it becomes the leader
+- Once you have a single leader, you can ask the system for information
+- Leaders only ever append a single log
+- Leader terms expire basically? I guess?
+- If none of the nodes die and the leader keeps pinging it could stay leader
+- Each node has their own timer for when they think a leader's term is over, when they send out requests for votes
+    - Through randomness, can ensure roughly one candidate per term
+- Raft optimizes for a single instruction, I think he said
+- __my question__: has Raft replaced Paxos at scale? It seems like over time it will.
+    - Weird thing: there are like 20ish implementations of Raft, but there are only 2 authors on it, and they have so much more than jsut a proof of concept.
+- It basically took them a year to understand Paxos, so they were like screw it let's show you how bed it is by making our own better version.
+- Author is well-known for introducing log-structured file systems. Logs permeate his work
+
+## drat (Go Project 3)
+```go
+func handleStdin()
+
+func handleConn()
+
+main() {
+    go handleStdin()
+    go handleConn()
+    for {
+        select (
+        case td := <- sendQ // not sure td is what he wrote
+        case rx := <- recvQ// not sure rx is what he wrote
+    }
+}
+
+// channels
+sendQ := make(chan []bytes)
+recvQ := make(chan drat.PDU)
+done := make(chan)
+```
+- goroutines send messages to one another via channels
+
+
+# MISSED CLASS (sick)
+_Thursday April 17_
+
+
+# Ryoan: A Distributed Sandbox for Untrusted Computation on Secret Data
+_Tuesday April 22_
+
 
